@@ -138,5 +138,7 @@ mysql> grant all on oozie.* TO 'oozie'@'%' IDENTIFIED BY 'oozie';
 [root@cuper1 ec2-user]# echo hdfs - nproc 32768 >> /etc/security/limits.conf
 [root@cuper1 ec2-user]# echo mapred - nproc 32768 >> /etc/security/limits.conf
 [root@cuper1 ec2-user]# echo hbase - nproc 32768 >> /etc/security/limits.conf
+# use for limit checks
+runuser -l mapred -c 'ulimit -Hn'
 ```
 
