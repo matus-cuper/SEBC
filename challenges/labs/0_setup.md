@@ -10,7 +10,7 @@ RHEL-6.7_HVM-20160412-x86_64-1-Hourly2-GP2 (ami-23abb849)
 ```
 ## public IP MySQL host
 ```
-54.209.228.60
+54.173.70.151
 ```
 ### ls /usr/java
 ```
