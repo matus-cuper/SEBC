@@ -10,7 +10,7 @@ fdisk /dev/xvdf
 mkfs -t ext4 /dev/xvdf1
 mount /dev/xvdf1 /data/01
 ```
- * And edit fstab **vim /etc/fstab**
+* And edit fstab **vim /etc/fstab**
 ```
 UUID=b1ef16a8-f364-436f-a9b7-1ee5e452b81f /data/01      ext4    defaults,noatime 0 2
 ```
@@ -37,7 +37,7 @@ service ntpd start
 hostname cuper1.cdh.seb
 echo "cuper1.cdh.seb" > /proc/sys/kernel/hostname
 ```
- * And edit network **vim /etc/sysconfig/network**
+* And edit network **vim /etc/sysconfig/network**
 ```
 HOSTNAME=cuper1.cdh.seb
 ```
@@ -55,8 +55,8 @@ HOSTNAME=cuper1.cdh.seb
 ```
 ssh-keygen -t rsa
 ```
- * Copy over other hosts private key **vim /root/.ssh/id_rsa**
- * Copy over other hosts public key
+* Copy over other hosts private key **vim /root/.ssh/id_rsa**
+* Copy over other hosts public key
 ```
 chmod 400 /root/.ssh/id_rsa
 echo "ssh-rsa $PUBLIC_KEY" >> /root/.ssh/authorized_keys
@@ -69,17 +69,17 @@ echo "ssh-rsa $PUBLIC_KEY" >> /root/.ssh/authorized_keys
 cd /tmp && wget http://dev.mysql.com/get/mysql57-community-release-el6-9.noarch.rpm
 rpm -Uvh mysql57-community-release-el6-9.noarch.rpm
 ```
- * Select right version and deselect others **vim /etc/yum.repos.d/mysql-community.repo**
+* Select right version and deselect others **vim /etc/yum.repos.d/mysql-community.repo**
 ```
 enabled=0
  # or
 enabled=1
 ```
- * On replica nodes install server
+* On replica nodes install server
 ```
 yum install -y mysql-community-server
 ```
- * On other nodes install client
+* On other nodes install client
 ```
 yum install mysql-community-client
 ```
@@ -99,7 +99,7 @@ cp mysql-connector-java-5.1.39/mysql-connector-java-5.1.39-bin.jar /usr/share/ja
 log-bin=mysql-bin
 server-id=1
 ```
- * And configure master eplica
+* And configure master eplica
 ```
 service mysqld start
 mysql -u root
@@ -115,7 +115,7 @@ quit;
 ```
 server-id=2
 ```
- * And configure slave replica
+* And configure slave replica
 ```
 service mysqld start
 mysql
@@ -236,18 +236,19 @@ http://cuper-repo.cdh.seb/sqoop-connectors/parcels/latest/
 ```
 yum install krb5-server krb5-libs krb5-auth-dialog
 ```
- * And edit and add to end of KDC configuration **vim /var/kerberos/krb5kdc/kdc.conf**
- ```
- default_principal_flags = +renewable
- max_life = 1d
- max_renewable_life = 7d
- ```
+
+* And edit and add to end of KDC configuration **vim /var/kerberos/krb5kdc/kdc.conf**
+```
+default_principal_flags = +renewable
+max_life = 1d
+max_renewable_life = 7d
+```
 
 * On each host
 ```
 yum install krb5-workstation krb5-libs krb5-auth-dialog
 ```
- * And change realms and add to end of  Kerberos configuration **vim /etc/krb5.conf**
+* And change realms and add to end of  Kerberos configuration **vim /etc/krb5.conf**
 ```
 [realms]
  CUPER.CDH.SEB = {
@@ -271,12 +272,12 @@ kadmin.local
 addprinc -pw cloudera mcuper/admin@CUPER.CDH.SEB
 addprinc -pw cloudera cloudera-scm/admin@CUPER.CDH.SEB
 ```
- * And edit kadmin ACL configuration file **vim /var/kerberos/krb5kdc/kadm5.acl**
+* And edit kadmin ACL configuration file **vim /var/kerberos/krb5kdc/kadm5.acl**
 ```
 */admin@CUPER.CDH.SEB   *
 cloudera-scm/admin@CUPER.CDH.SEB        *
 ```
- * And start kadmin service
+* And start kadmin service
 ```
 service kadmin start
 ```
@@ -286,7 +287,7 @@ service kadmin start
 kinit mcuper/admin
 kadmin -p mcuper/admin
 ```
- * And create principals for services
+* And create principals for services
 ```
 addprinc hdfs@CUPER.CDH.SEB
 addprinc hive@CUPER.CDH.SEB
