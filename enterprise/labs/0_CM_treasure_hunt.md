@@ -13,6 +13,8 @@ Security Security -> Kerberos Credentials
 hue, hive, zookeeper, oozie, yarn, hdfs, sentry
 ```
 
+mfernest - More generally, all active services must have a property to enable Kerberos. Configuring each service for Kerberos is the most time-consuming and error-prone aspect that automation makes easier. It is also the reason backing out of wizard-driven Kerberos configuration has to be done by hand -- the service dependency tree makes automating a rollback extremely difficult.
+
 ## How do you upgrade the CM agents?
 ```
 via upgrade wizard that is invoked when you connect to the Admin Console or manually install the Cloudera Manager Agent packages
@@ -22,6 +24,9 @@ via upgrade wizard that is invoked when you connect to the Admin Console or manu
 ```
 
 ```
+
+mfernest - Have you figured this one out?
+
 
 ## Name all the roles that make up the Hive service
 ```
@@ -33,3 +38,4 @@ Hive Gateway, Hive Metastore Server, HiveServer2, WebHCat Server
 installed kerberos and created pricipal for Cloudera Manager
 ```
 
+mfernest- Review all the checkboxes you're required to fill before starting CM's Kerberos wizard.
