@@ -239,6 +239,8 @@ yum install krb5-server krb5-libs krb5-auth-dialog
 
 * And edit and add to end of KDC configuration **vim /var/kerberos/krb5kdc/kdc.conf**
 ```
+database_name = /var/kerberos/krb5kdc/cuper_cdh_seb
+
 default_principal_flags = +renewable
 max_life = 1d
 max_renewable_life = 7d
